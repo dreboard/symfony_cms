@@ -1,0 +1,54 @@
+{% extends 'base/base-security.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="login-div text-center">
+        <div class="text-center">
+            <div class="card">
+                <div class="card-body">
+                    <div class="login-title">
+                        <h4>Log In</h4>
+                    </div>
+                    <div class="login-form mt-4">
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <input id="email" placeholder="Email Address" class="form-control" type="email" value="{{ last_username }}" name="email">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="password" class="form-control" id="pass" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="_remember_me" id="updatecheck1">
+                                        <label class="form-check-label" for="updatecheck1">
+                                            <small>remember me</small>
+
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('app_home') }}">Home </a> | <a href="#">Reset Password </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
