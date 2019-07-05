@@ -18,7 +18,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin", name="admin_home")
      */
     public function admin()
     {
