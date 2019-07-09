@@ -1,0 +1,36 @@
+{% extends 'base/base-admin.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <h2>Articles</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+       {% for article in articles %}
+        <tr>
+            <th scope="row">{{ article.id }}</th>
+            <td>
+                <a href="{{ path('article_show', { id: article.id } ) }}">
+                    {{ article.title }}
+                </a>
+            </td>
+            <td>{{ article.publishedAt|date(' l dS F Y H:i:s') }}</td>
+            <td>@twitter</td>
+        </tr>
+       {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

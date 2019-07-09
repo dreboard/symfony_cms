@@ -1,0 +1,12 @@
+{% extends 'base/base-admin.html.twig' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+{% endblock %}
+

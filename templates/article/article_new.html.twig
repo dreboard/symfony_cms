@@ -1,0 +1,41 @@
+{% extends 'base/base-admin.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="inputTitle">Article Title</label>
+                    <input name="title" type="text" class="form-control" id="inputTitle" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="titleHelp" class="form-text text-muted">Article here</small>
+                </div>
+                <div class="form-group">
+                    <label for="contentTextarea">Examprea</label>
+                    <textarea name="content" class="form-control" id="contentTextarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorySelect">Category</label>
+                    <select name="category" multiple class="form-control" id="categorySelect">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
