@@ -104,14 +104,15 @@
                 <span>Articles</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Login Screens:</h6>
-                <a class="dropdown-item" href="login.html">Login</a>
-                <a class="dropdown-item" href="register.html">Register</a>
-                <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Article Pages:</h6>
+                <h6 class="dropdown-header">Articles:</h6>
                 <a class="dropdown-item" href="{{ path('article_new') }}">Create</a>
                 <a class="dropdown-item active" href="{{ path('article_all') }}">All</a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Categories:</h6>
+                <a class="dropdown-item" href="{{ path('article_all') }}">All</a>
+                <a class="dropdown-item" href="{{ path('article_new') }}">New</a>
+                <a class="dropdown-item" href="{{ path('article_new') }}">Forgot Password</a>
+
             </div>
         </li>
         <li class="nav-item">

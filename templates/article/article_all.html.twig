@@ -12,9 +12,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Title</th>
+            <th scope="col">Published</th>
+            <th scope="col">Category</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 </a>
             </td>
             <td>{{ article.publishedAt|date(' l dS F Y H:i:s') }}</td>
-            <td>@twitter</td>
+            <td>category</td>
         </tr>
        {% endfor %}
         </tbody>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,14 +28,14 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/new", name="article_new")
+     * @Route("/article/new", name="article_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $em)
     {
         if ($request->isMethod('POST')){
             $article = new Article();
             $article->setTitle($request->request->get('title'));
-            $article->setSlug($request->request->get('title'));
+            $article->setSlug(str_replace(' ', '-', $request->request->get('title')));
             $article->setContent($request->request->get('content'));
 
             if ($request->request->has('publishedAt')){
@@ -44,13 +45,15 @@ class ArticleController extends AbstractController
             $em->persist($article);
             $em->flush();
 
-            return $this->render('article/article_show.html.twig', [
-                'article' => $article,
-            ]);
+            return $this->redirectToRoute('article_show',
+                ['id' => $article->getId()]
+            );
         }
 
+        $repo = $em->getRepository(Category::class);
+        $categories = $repo->findAll();
         return $this->render('article/article_new.html.twig', [
-            'controller_name' => 'ArticleController',
+            'categories' => $categories,
         ]);
     }
 
@@ -69,6 +72,7 @@ class ArticleController extends AbstractController
         if (!$article){
             throw $this->createNotFoundException(sprintf('No article found $s', $id));
         }
+
 
         return $this->render('article/article_show.html.twig', [
             'article' => $article,

@@ -12,6 +12,7 @@ use Faker\Factory;
  */
 class ArticleFixture extends Fixture
 {
+    private $categories = ['errors', 'exceptions', 'debugging', 'logging', 'profiling', 'tracing'];
 
     public function __construct()
     {
@@ -21,11 +22,15 @@ class ArticleFixture extends Fixture
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < 7; $i++) {
+            $cat = array_rand($this->categories);
+            $catNum = array_rand(range(1, count($this->categories)));
             $article = new Article();
             $title = $this->faker->sentence($nbWords = 6, $variableNbWords = true);
             $article->setTitle($title);
             $article->setSlug(str_replace(' ', '-', $title));
             $article->setContent($this->faker->text($maxNbChars = 200));
+            $article->setCategory($this->categories[$catNum]);
+            $article->setAuthor($this->categories[$catNum]);
             $article->setPublishedAt(new \DateTime());
             $manager->persist($article);
         }
